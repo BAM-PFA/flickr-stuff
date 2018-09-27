@@ -1,11 +1,9 @@
 #!/usr/env python3
-
 '''
 this may or may not be a useful tool for interns to create CSVs of existing
 metadata for uploading images to piction, in addition to or instead of the 
 other flickr scripts in this repo.
 '''
-
 import argparse
 import json
 import os

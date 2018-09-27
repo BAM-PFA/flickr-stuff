@@ -4,17 +4,13 @@ The Flickr API returns 100 images per page by default. So you have
 to deal with paginated results. This writes all the pages returned
 into a dictionary that is then parsed by another script.
 '''
-
 import flickr_api.api
+import utils
+# set the api key and authentication
+utils.setup()
 
-flickr_api.set_keys(api_key="123456",api_secret="654321")
-flickr_api.set_auth_handler("/path/to/flickr_auth.txt")
-
-outputFile = '/path/to/FlickrPageOutput.txt'
-
-
+outputFile = './FlickrPageOutput1.txt'
 pageSearch = flickr_api.api.FlickrMethodProxy('flickr.photos.search')
-
 pagesDict = {}
 # i know that there are 89 pages of images
 for i in range(1,90):
