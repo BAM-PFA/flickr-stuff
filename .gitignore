@@ -1,3 +1,4 @@
 .DS*
 config.ini
 __py*
+*auth.txt
