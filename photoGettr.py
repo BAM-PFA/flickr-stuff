@@ -1,6 +1,9 @@
 #!/usr/bin/env python3
 import lxml.etree as etree
+import os
 import re
+import requests
+import time
 
 '''
 need to grab:
@@ -14,9 +17,11 @@ title (parsed and stripped of non alphanumerics)
 tags
 description
 '''
-photoDataPath = "FlickrphotoData1.xml"
 
-photoDestDir = "."
+print(time.strftime("%Y-%m-%dT%H:%M:%S"))
+photoDataPath = "FlickrphotoData3.xml"
+
+photoDestDir = "../"
 
 with open(photoDataPath,'rb') as f:
 	data = etree.parse(f)
@@ -36,7 +41,7 @@ for element in photos:
 		title = element.get('title')
 		# now parse the shit out of the title to get only alphanumerics
 		# going to use it to build a (temp) filename on download
-		title = re.sub('[^0-9a-zA-Z\ ]+', '', title.lower())
+		title = re.sub('[^0-9a-zA-Z\ \-]+', '', title.lower())
 		coolPhotos[counter]['title'] = title = title.replace(' ','-')
 		
 		child = element.xpath('photo')[0]
@@ -67,4 +72,27 @@ for element in photos:
 
 print(coolPhotos)
 
+counter = 0
+for key, value in coolPhotos.items():
+	# if counter < 5:
+	filename = coolPhotos[key]['filename']
+	url = coolPhotos[key]['url']
+	# extension = coolPhotos[key]['extension']
+	path = os.path.join(photoDestDir,filename)
+	try:
+		response = requests.get(url)
+		with open(path,'wb') as f:
+			f.write(response.content)
+		coolPhotos[key]['downloaded'] = True
+		coolPhotos[key]['download time'] = time.strftime("%Y-%m-%dT%H:%M:%S")
+	except:
+		coolPhotos[key]['download time'] = ""
+		coolPhotos[key]['downloaded'] = False
+	print(path)
 
+	counter += 1
+
+with open('coolPhotos.txt','w') as f:
+	f.write(str(coolPhotos))
+
+print(time.strftime("%Y-%m-%dT%H:%M:%S"))
