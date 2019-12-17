@@ -10,8 +10,8 @@ import copy
 import lxml.etree
 
 # this is a dict of {(flickr result page#): (page result XML)}
-inputFile = "/path/to/FlickrPageOutput.txt"
-outputFile = "/path/to/Flickrphotos.xml"
+inputFile = "FlickrPageOutput.txt"
+outputFile = "Flickrphotos.xml"
 with open(inputFile,'r') as f:
 	text = f.read()
 flickrDict = ast.literal_eval(text)

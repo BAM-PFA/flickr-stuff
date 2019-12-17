@@ -18,13 +18,13 @@ utils.setup()
 # overwrite existing data.... 
 # dataFile 0 is the original data set from flickrPager.py and pageExtractor.py
 # it's a <flickr> element with X number of <photo> elements
-dataFiles = {0:"/path/to/Flickrphotos.xml",
+dataFiles = {0:"Flickrphotos.xml",
 	# at the end of the first pass, dataFile 1 will contain all the original data
 	# plus the augmented data from the query. I know there are 8800 photos,
 	# so to keep in the API limit of 3600 queries per hour I will run three passes. 
-	1: "/path/to/FlickrphotoData1.xml",
-	2: "/path/to/FlickrphotoData2.xml",
-	3: "/path/to/FlickrphotoData3.xml"
+	1: "FlickrphotoData1.xml",
+	2: "FlickrphotoData2.xml",
+	3: "FlickrphotoData3.xml"
 	}
 
 def do_query(sourceFile,outFile,fileCounter):

@@ -21,7 +21,7 @@ description
 print(time.strftime("%Y-%m-%dT%H:%M:%S"))
 photoDataPath = "FlickrphotoData3.xml"
 
-photoDestDir = "../"
+photoDestDir = "./photos/"
 
 with open(photoDataPath,'rb') as f:
 	data = etree.parse(f)

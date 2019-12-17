@@ -2,7 +2,7 @@
 
 These are some WIP scripts to deal with the dead weight of Flickr photos that [BAMPFA](https://www.flickr.com/photos/bampfa/) has not dealt with or added to since 2016. The ultimate goal is to get the stuff off of Flickr and into Piction, our DAMS where this stuff should have been in the first place.
 
-Working with the API is less than ideal but doable. 
+Working with the Flickr API is less than ideal but doable. 
 
 Relies on the [flickr_api](https://github.com/alexis-mignon/python-flickr-api) library for Python. I'm using python3, which does not seem to be fully supported (see this [PR](https://github.com/alexis-mignon/python-flickr-api/pull/101)) but is definitely doable. They have a pretty good authentication module documented on their wiki. Installs with `pip3 install flickr_api`
 
